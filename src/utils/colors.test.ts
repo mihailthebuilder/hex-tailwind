@@ -14,15 +14,9 @@ test("hexToRgb", () => {
   expect(hexToRgb("D6D3D1")).toStrictEqual({ R: 214, G: 211, B: 209 });
 });
 
-test("closestTailwindToHex", () => {
-  const testCases = [
-    ["000000", "black"],
-    ["FFFFFF", "white"],
-  ];
-
-  testCases.forEach((testCase) => {
-    const [input, expected] = testCase;
-
-    expect(closestTailwindToHex(input as string)).toBe(expected as string);
-  });
+test.each([
+  ["000000", "black"],
+  ["FFFFFF", "white"],
+])("closestTailwindToHex(%s) -> %s", (input, expected) => {
+  expect(closestTailwindToHex(input)).toBe(expected);
 });

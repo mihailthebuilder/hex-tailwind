@@ -1,49 +1,75 @@
 import colors from "tailwindcss/colors";
 import type { DefaultColors } from "tailwindcss/types/generated/colors";
+import { closest } from "color-diff";
 
-let copiedColors = JSON.parse(JSON.stringify(colors));
+type Rgb = { R: number; G: number; B: number };
+type RgbMap = Map<Rgb, string>;
 
-delete copiedColors.inherit;
-delete copiedColors.transparent;
-delete copiedColors.current;
-delete copiedColors.lightBlue;
-delete copiedColors.warmGray;
-delete copiedColors.trueGray;
-delete copiedColors.coolGray;
-delete copiedColors.blueGray;
+const rgbToTailwindMap: (colors: DefaultColors) => RgbMap = (colors) => {
+  let importedColors = JSON.parse(JSON.stringify(colors));
 
-type ColoursToMap = Omit<
-  DefaultColors,
-  | "inherit"
-  | "transparent"
-  | "current"
-  | "lightBlue"
-  | "warmGray"
-  | "trueGray"
-  | "coolGray"
-  | "trueGray"
->;
+  delete importedColors.inherit;
+  delete importedColors.transparent;
+  delete importedColors.current;
+  delete importedColors.lightBlue;
+  delete importedColors.warmGray;
+  delete importedColors.trueGray;
+  delete importedColors.coolGray;
+  delete importedColors.blueGray;
 
-let colorsToMap = copiedColors as ColoursToMap;
+  const out = new Map<Rgb, string>();
+
+  out.set(hexToRgb("000000"), "black");
+  delete importedColors.black;
+
+  out.set(hexToRgb("ffffff"), "white");
+  delete importedColors.white;
+
+  type TailwindColorsToMap = Omit<
+    DefaultColors,
+    | "inherit"
+    | "transparent"
+    | "current"
+    | "lightBlue"
+    | "warmGray"
+    | "trueGray"
+    | "coolGray"
+    | "trueGray"
+    | "white"
+    | "black"
+  >;
+
+  const colorsToMap = importedColors as TailwindColorsToMap;
+
+  Object.keys(colorsToMap).forEach((color) => {
+    const tailwindShadesForGivenColor = colorsToMap[color as "stone"];
+
+    Object.keys(tailwindShadesForGivenColor).forEach((shade) => {
+      const hex = tailwindShadesForGivenColor[shade as "50"].slice(1);
+      out.set(hexToRgb(hex), `${color}-${shade}`);
+    });
+  });
+
+  return out;
+};
+
+const RgbToTailwindMap = rgbToTailwindMap(colors);
+
+const TailwindRgbColors = RgbToTailwindMap.keys();
 
 export const hexToTailwind = (hex: string) => {
   const normalizedHex = normalizeHex(hex);
-  const rgb = hexToRgb(normalizedHex);
+  const gotRgb = hexToRgb(normalizedHex);
 
-  // const inputLab = rgbToLab(hexToRgb(normalizeHex(hex)));
+  const closestRgb = closest(gotRgb, TailwindRgbColors) as Rgb;
 
-  // const closestColor = labColors
-  //   .map((color) => ({
-  //     ...color,
-  //     deltaE: deltaE(inputLab, color.lab).toFixed(2),
-  //   }))
-  //   .sort((a, b) => a.deltaE - b.deltaE)[0];
+  const closestTailwind = RgbToTailwindMap.get(closestRgb);
 
-  // return {
-  //   tailwind: `${closestColor.main}-${closestColor.sub}`,
-  //   tailwindHex: closestColor.hex,
-  //   deltaE: closestColor.deltaE,
-  // };
+  if (closestTailwind === undefined) {
+    throw Error("couldn't find closest tailwind");
+  }
+
+  return closestTailwind;
 };
 
 export const normalizeHex = (hex: string) => {
@@ -59,7 +85,7 @@ export const normalizeHex = (hex: string) => {
   return normalizedHex;
 };
 
-export const hexToRgb = (hex: string) => {
+export const hexToRgb: (hex: string) => Rgb = (hex) => {
   // https://github.com/sindresorhus/hex-rgb/blob/main/index.js
 
   const number = Number.parseInt(hex, 16);
@@ -67,5 +93,5 @@ export const hexToRgb = (hex: string) => {
   const green = (number >> 8) & 255;
   const blue = number & 255;
 
-  return { red, green, blue };
+  return { R: red, G: green, B: blue };
 };

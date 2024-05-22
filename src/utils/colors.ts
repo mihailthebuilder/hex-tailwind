@@ -57,7 +57,7 @@ const RgbToTailwindMap = rgbToTailwindMap(colors);
 
 const TailwindRgbColors = RgbToTailwindMap.keys();
 
-export const hexToTailwind = (hex: string) => {
+export const closestTailwindToHex = (hex: string) => {
   const normalizedHex = normalizeHex(hex);
   const gotRgb = hexToRgb(normalizedHex);
 

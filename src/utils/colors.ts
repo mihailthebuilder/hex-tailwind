@@ -5,6 +5,17 @@ import { closest } from "color-diff";
 type Rgb = { R: number; G: number; B: number };
 type RgbMap = Map<Rgb, string>;
 
+export const hexToRgb: (hex: string) => Rgb = (hex) => {
+  // https://github.com/sindresorhus/hex-rgb/blob/main/index.js
+
+  const number = Number.parseInt(hex, 16);
+  const red = number >> 16;
+  const green = (number >> 8) & 255;
+  const blue = number & 255;
+
+  return { R: red, G: green, B: blue };
+};
+
 const rgbToTailwindMap: (colors: DefaultColors) => RgbMap = (colors) => {
   let importedColors = JSON.parse(JSON.stringify(colors));
 
@@ -83,15 +94,4 @@ export const normalizeHex = (hex: string) => {
   }
 
   return normalizedHex;
-};
-
-export const hexToRgb: (hex: string) => Rgb = (hex) => {
-  // https://github.com/sindresorhus/hex-rgb/blob/main/index.js
-
-  const number = Number.parseInt(hex, 16);
-  const red = number >> 16;
-  const green = (number >> 8) & 255;
-  const blue = number & 255;
-
-  return { R: red, G: green, B: blue };
 };

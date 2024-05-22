@@ -2,7 +2,7 @@ import colors from "tailwindcss/colors";
 import type { DefaultColors } from "tailwindcss/types/generated/colors";
 
 // @ts-ignore
-import { closest } from "color-diff";
+import { closest, diff } from "color-diff";
 
 type Rgb = { R: number; G: number; B: number };
 type RgbMap = Map<Rgb, string>;
@@ -70,19 +70,33 @@ const RgbToTailwindMap = rgbToTailwindMap(colors);
 
 const TailwindRgbColors = Array.from(RgbToTailwindMap.keys());
 
+function componentToHex(c: number) {
+  var hex = c.toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(rgb: Rgb) {
+  return componentToHex(rgb.R) + componentToHex(rgb.G) + componentToHex(rgb.B);
+}
+
 export const closestTailwindToHex = (hex: string) => {
   const normalizedHex = normalizeHex(hex);
   const gotRgb = hexToRgb(normalizedHex);
 
-  const closestRgb = closest(gotRgb, TailwindRgbColors) as Rgb;
+  const closestTailwindRgb = closest(gotRgb, TailwindRgbColors) as Rgb;
+  const closestTailwindDiff = diff(gotRgb, closestTailwindRgb) as number;
+  const closestTailwindHex = rgbToHex(closestTailwindRgb);
 
-  const closestTailwind = RgbToTailwindMap.get(closestRgb);
-
+  const closestTailwind = RgbToTailwindMap.get(closestTailwindRgb);
   if (closestTailwind === undefined) {
     throw Error("couldn't find closest tailwind");
   }
 
-  return closestTailwind;
+  return {
+    tailwind: closestTailwind,
+    hex: closestTailwindHex,
+    diff: closestTailwindDiff,
+  };
 };
 
 export const normalizeHex = (hex: string) => {

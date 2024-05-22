@@ -11,7 +11,7 @@ test("normalizeHex with 6 characters", () => {
 });
 
 test("hexToRgb", () => {
-  expect(hexToRgb("D6D3D1")).toStrictEqual({ red: 214, green: 211, blue: 209 });
+  expect(hexToRgb("D6D3D1")).toStrictEqual({ R: 214, G: 211, B: 209 });
 });
 
 test("closestTailwindToHex", () => {

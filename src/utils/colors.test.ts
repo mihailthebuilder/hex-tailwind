@@ -4,11 +4,11 @@ import { hexToRgb, normalizeHex } from "./colors";
 import { green } from "tailwindcss/colors";
 
 test("normalizeHex with 3 characters", () => {
-  expect(normalizeHex("FFF")).toBe("#FFFFFF");
+  expect(normalizeHex("FFF")).toBe("FFFFFF");
 });
 
 test("normalizeHex with 6 characters", () => {
-  expect(normalizeHex("FFFFFF")).toBe("#FFFFFF");
+  expect(normalizeHex("FFFFFF")).toBe("FFFFFF");
 });
 
 test("hexToRgb", () => {

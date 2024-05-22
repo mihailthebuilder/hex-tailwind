@@ -56,7 +56,7 @@ export const normalizeHex = (hex: string) => {
       .join("");
   }
 
-  return "#" + normalizedHex;
+  return normalizedHex;
 };
 
 export const hexToRgb = (hex: string) => {

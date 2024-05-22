@@ -1,5 +1,5 @@
 ---
-
+import HexToTailwind from "../components/HexToTailwind";
 ---
 
 <html lang="en">
@@ -11,6 +11,10 @@
     <title>Astro</title>
   </head>
   <body>
-    <h1>Astro</h1>
+    <main class="mx-auto max-w-screen-sm">
+      <h1>Astro</h1>
+
+      <HexToTailwind client:load />
+    </main>
   </body>
 </html>

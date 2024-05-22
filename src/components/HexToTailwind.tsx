@@ -36,7 +36,8 @@ const HexToTailwind = () => {
 };
 
 const isValidHex: (input: string) => boolean = (input) => {
-  return true;
+  let regex = new RegExp(/^([a-f0-9]{6}|[a-f0-9]{3})$/);
+  return regex.test(input);
 };
 
 const HexColor = ({ hexInput }: { hexInput: string }) => {

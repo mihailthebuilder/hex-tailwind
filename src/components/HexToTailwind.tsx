@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { closestTailwindToHex } from "../utils/colors";
 
 const HexToTailwind = () => {
   const [hexInput, setHexInput] = useState("");
@@ -27,8 +28,8 @@ const HexToTailwind = () => {
 
       {isValidHex(hexInput) && (
         <>
-          <HexColor hexInput={hexInput} />
-          <TailwindColor hexInput={hexInput} />
+          <HexColor hex={hexInput} />
+          <TailwindColor hex={hexInput} />
         </>
       )}
     </>
@@ -40,23 +41,25 @@ const isValidHex: (input: string) => boolean = (input) => {
   return regex.test(input);
 };
 
-const HexColor = ({ hexInput }: { hexInput: string }) => {
+const HexColor = ({ hex }: { hex: string }) => {
   return (
     <>
       <p>Input color</p>
-      <div
-        className="h-10 w-10"
-        style={{ backgroundColor: `#${hexInput}` }}
-      ></div>
+      <div className="h-10 w-10" style={{ backgroundColor: `#${hex}` }}></div>
     </>
   );
 };
 
-const TailwindColor = ({ hexInput }: { hexInput: string }) => {
+const TailwindColor = ({ hex }: { hex: string }) => {
+  const closestTailwind = closestTailwindToHex(hex);
+
   return (
     <>
-      <p>Tailwind color</p>
-      <div className="h-10 w-10 bg-transparent"></div>
+      <p>
+        Tailwind color - {closestTailwind.tailwind}, {closestTailwind.hex},
+        {closestTailwind.diff}
+      </p>
+      <div className={`h-10 w-10 bg-${closestTailwind.tailwind}`}></div>
     </>
   );
 };

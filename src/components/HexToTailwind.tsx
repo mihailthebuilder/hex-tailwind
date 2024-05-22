@@ -3,15 +3,26 @@ import { useState } from "react";
 const HexToTailwind = () => {
   const [hexInput, setHexInput] = useState("");
 
+  const handleHexInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    let newInput = event.target.value.toLowerCase();
+
+    if (newInput.length === 0) {
+      setHexInput(newInput);
+      return;
+    }
+
+    newInput = newInput.replaceAll("#", "");
+
+    setHexInput(newInput);
+  };
+
   return (
     <>
       <input
         type="text"
         className="border uppercase"
-        value={hexInput}
-        onChange={(event) => {
-          setHexInput(event.target.value.toLowerCase());
-        }}
+        value={`#${hexInput}`}
+        onChange={handleHexInputChange}
       />
 
       {isValidHex(hexInput) && (
@@ -29,6 +40,7 @@ const isValidHex: (input: string) => boolean = (input) => {
 };
 
 const HexColor = ({ hexInput }: { hexInput: string }) => {
+  console.log(hexInput);
   return (
     <>
       <p>Input color</p>

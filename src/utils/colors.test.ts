@@ -18,6 +18,8 @@ test.each([
   ["ffffff", "white"],
   ["93c5fd", "blue-300"],
   ["701a75", "fuchsia-900"],
+  ["9101ec", "purple-600"],
+  ["123c2d", "emerald-950"],
 ])("closestTailwindToHex(%s) -> %s", (input, expected) => {
   expect(closestTailwindToHex(input)).toBe(expected);
 });

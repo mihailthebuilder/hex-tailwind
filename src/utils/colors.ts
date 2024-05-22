@@ -1,5 +1,7 @@
 import colors from "tailwindcss/colors";
 import type { DefaultColors } from "tailwindcss/types/generated/colors";
+
+// @ts-ignore
 import { closest } from "color-diff";
 
 type Rgb = { R: number; G: number; B: number };
@@ -66,7 +68,7 @@ const rgbToTailwindMap: (colors: DefaultColors) => RgbMap = (colors) => {
 
 const RgbToTailwindMap = rgbToTailwindMap(colors);
 
-const TailwindRgbColors = RgbToTailwindMap.keys();
+const TailwindRgbColors = Array.from(RgbToTailwindMap.keys());
 
 export const closestTailwindToHex = (hex: string) => {
   const normalizedHex = normalizeHex(hex);

@@ -40,11 +40,13 @@ const isValidHex: (input: string) => boolean = (input) => {
 };
 
 const HexColor = ({ hexInput }: { hexInput: string }) => {
-  console.log(hexInput);
   return (
     <>
       <p>Input color</p>
-      <div className={`h-10 w-10 bg-[#${hexInput}]`}></div>
+      <div
+        className="h-10 w-10"
+        style={{ backgroundColor: `#${hexInput}` }}
+      ></div>
     </>
   );
 };

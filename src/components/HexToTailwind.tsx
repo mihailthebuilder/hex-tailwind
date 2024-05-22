@@ -14,10 +14,18 @@ const HexToTailwind = () => {
         }}
       />
 
-      <HexColor hexInput={hexInput} />
-      <TailwindColor hexInput={hexInput} />
+      {isValidHex(hexInput) && (
+        <>
+          <HexColor hexInput={hexInput} />
+          <TailwindColor hexInput={hexInput} />
+        </>
+      )}
     </>
   );
+};
+
+const isValidHex: (input: string) => boolean = (input) => {
+  return true;
 };
 
 const HexColor = ({ hexInput }: { hexInput: string }) => {

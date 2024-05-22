@@ -3,11 +3,11 @@ import { expect, test } from "vitest";
 import { closestTailwindToHex, hexToRgb, normalizeHex } from "./colors";
 
 test("normalizeHex with 3 characters", () => {
-  expect(normalizeHex("FFF")).toBe("FFFFFF");
+  expect(normalizeHex("fff")).toBe("ffffff");
 });
 
 test("normalizeHex with 6 characters", () => {
-  expect(normalizeHex("FFFFFF")).toBe("FFFFFF");
+  expect(normalizeHex("ffffff")).toBe("ffffff");
 });
 
 test("hexToRgb", () => {
@@ -16,7 +16,7 @@ test("hexToRgb", () => {
 
 test.each([
   ["000000", "black"],
-  ["FFFFFF", "white"],
+  ["ffffff", "white"],
 ])("closestTailwindToHex(%s) -> %s", (input, expected) => {
   expect(closestTailwindToHex(input)).toBe(expected);
 });

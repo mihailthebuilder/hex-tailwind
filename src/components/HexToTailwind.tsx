@@ -45,7 +45,7 @@ const HexColor = ({ hex }: { hex: string }) => {
   return (
     <>
       <p>Input color</p>
-      <div className="h-10 w-10" style={{ backgroundColor: `#${hex}` }}></div>
+      <div className="h-10 w-10" style={{ backgroundColor: "#" + hex }}></div>
     </>
   );
 };
@@ -59,7 +59,10 @@ const TailwindColor = ({ hex }: { hex: string }) => {
         Tailwind color - {closestTailwind.tailwind}, {closestTailwind.hex},
         {closestTailwind.diff}
       </p>
-      <div className={`h-10 w-10 bg-${closestTailwind.tailwind}`}></div>
+      <div
+        className="h-10 w-10"
+        style={{ backgroundColor: "#" + closestTailwind.hex }}
+      ></div>
     </>
   );
 };

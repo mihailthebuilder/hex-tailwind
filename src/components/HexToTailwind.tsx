@@ -25,8 +25,8 @@ const HexToTailwind = () => {
   return (
     <section>
       <div className="grid grid-cols-2 max-w-96 gap-y-2">
-        <p>Input HEX code:</p>
-        <p>Tailwind code:</p>
+        <p className="font-semibold">Input HEX code:</p>
+        <p className="font-semibold">Tailwind code:</p>
 
         <input
           type="text"
@@ -40,12 +40,14 @@ const HexToTailwind = () => {
             {closestTailwind ? (
               <>
                 <div className="flex mb-2">
-                  <div>{closestTailwind.tailwind}</div>
+                  <div className="mr-1">{closestTailwind.tailwind}</div>
                   <CopyIcon />
                 </div>
                 <div className="flex flex-row align-middle">
                   <CopyIcon />
-                  <div>#{closestTailwind.hex.toUpperCase()}</div>
+                  <div className="ml-1">
+                    #{closestTailwind.hex.toUpperCase()}
+                  </div>
                 </div>
               </>
             ) : (

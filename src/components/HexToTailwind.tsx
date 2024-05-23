@@ -3,7 +3,7 @@ import { closestTailwindToHex } from "../utils/colors";
 import CopyIcon from "./CopyIcon";
 
 const HexToTailwind = () => {
-  const [hexInput, setHexInput] = useState("");
+  const [hexInput, setHexInput] = useState("3e3e66");
 
   const closestTailwind = isValidHex(hexInput)
     ? closestTailwindToHex(hexInput)

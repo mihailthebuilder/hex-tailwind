@@ -18,21 +18,25 @@ const HexToTailwind = () => {
   };
 
   return (
-    <>
-      <input
-        type="text"
-        className="border uppercase"
-        value={`#${hexInput}`}
-        onChange={handleHexInputChange}
-      />
+    <section className="flex flex-row justify-center">
+      <div className="grid grid-cols-2 max-w-60">
+        <div>
+          <p>HEX code:</p>
+          <input
+            type="text"
+            className="border uppercase w-20"
+            value={`#${hexInput}`}
+            onChange={handleHexInputChange}
+          />
+          <div
+            className="h-10 w-full"
+            style={{ backgroundColor: "#" + hexInput }}
+          ></div>
+        </div>
 
-      {isValidHex(hexInput) && (
-        <>
-          <HexColor hex={hexInput} />
-          <TailwindColor hex={hexInput} />
-        </>
-      )}
-    </>
+        {isValidHex(hexInput) && <TailwindColor hex={hexInput} />}
+      </div>
+    </section>
   );
 };
 
@@ -41,29 +45,18 @@ const isValidHex: (input: string) => boolean = (input) => {
   return regex.test(input);
 };
 
-const HexColor = ({ hex }: { hex: string }) => {
-  return (
-    <>
-      <p>Input color</p>
-      <div className="h-10 w-10" style={{ backgroundColor: "#" + hex }}></div>
-    </>
-  );
-};
-
 const TailwindColor = ({ hex }: { hex: string }) => {
   const closestTailwind = closestTailwindToHex(hex);
 
   return (
-    <>
-      <p>
-        Tailwind color - {closestTailwind.tailwind}, {closestTailwind.hex},
-        {closestTailwind.diff}
-      </p>
+    <div>
+      <p>Tailwind code:</p>
+      <p>{closestTailwind.tailwind}</p>
       <div
-        className="h-10 w-10"
+        className="h-10 w-full"
         style={{ backgroundColor: "#" + closestTailwind.hex }}
       ></div>
-    </>
+    </div>
   );
 };
 

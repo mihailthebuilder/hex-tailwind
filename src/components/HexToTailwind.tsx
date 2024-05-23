@@ -4,6 +4,10 @@ import { closestTailwindToHex } from "../utils/colors";
 const HexToTailwind = () => {
   const [hexInput, setHexInput] = useState("");
 
+  const closestTailwind = isValidHex(hexInput)
+    ? closestTailwindToHex(hexInput)
+    : undefined;
+
   const handleHexInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let newInput = event.target.value.toLowerCase();
 
@@ -18,23 +22,38 @@ const HexToTailwind = () => {
   };
 
   return (
-    <section className="flex flex-row justify-center">
-      <div className="grid grid-cols-2 max-w-60">
-        <div>
-          <p>HEX code:</p>
-          <input
-            type="text"
-            className="border uppercase w-20"
-            value={`#${hexInput}`}
-            onChange={handleHexInputChange}
-          />
-          <div
-            className="h-10 w-full"
-            style={{ backgroundColor: "#" + hexInput }}
-          ></div>
+    <section>
+      <div className="grid grid-cols-2 max-w-96 gap-y-2">
+        <p>Input HEX code:</p>
+        <p>Tailwind code (with HEX):</p>
+
+        <input
+          type="text"
+          className="border uppercase w-40 block rounded shadow focus:ring-cyan-800 p-2"
+          value={`#${hexInput}`}
+          onChange={handleHexInputChange}
+        />
+
+        <div className="flex flex-col align-middle justify-center">
+          <span>
+            {closestTailwind
+              ? `${closestTailwind.tailwind} / #${closestTailwind.hex}`
+              : "..."}
+          </span>
         </div>
 
-        {isValidHex(hexInput) && <TailwindColor hex={hexInput} />}
+        <div
+          className="h-10 w-full"
+          style={{ backgroundColor: "#" + hexInput }}
+        ></div>
+        <div
+          className="h-10 w-full"
+          style={{
+            backgroundColor: closestTailwind
+              ? "#" + closestTailwind.hex
+              : "transparent",
+          }}
+        ></div>
       </div>
     </section>
   );
@@ -43,21 +62,6 @@ const HexToTailwind = () => {
 const isValidHex: (input: string) => boolean = (input) => {
   let regex = new RegExp(/^([a-f0-9]{6}|[a-f0-9]{3})$/);
   return regex.test(input);
-};
-
-const TailwindColor = ({ hex }: { hex: string }) => {
-  const closestTailwind = closestTailwindToHex(hex);
-
-  return (
-    <div>
-      <p>Tailwind code:</p>
-      <p>{closestTailwind.tailwind}</p>
-      <div
-        className="h-10 w-full"
-        style={{ backgroundColor: "#" + closestTailwind.hex }}
-      ></div>
-    </div>
-  );
 };
 
 export default HexToTailwind;

@@ -25,7 +25,9 @@ const HexToTailwind = () => {
     <section>
       <div className="grid grid-cols-2 max-w-96 gap-y-2">
         <p>Input HEX code:</p>
-        <p>Tailwind code (with HEX):</p>
+        <p>
+          Tailwind code <span className="inline-block">(with HEX):</span>
+        </p>
 
         <input
           type="text"

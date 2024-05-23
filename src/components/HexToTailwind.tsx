@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { closestTailwindToHex } from "../utils/colors";
+import CopyIcon from "./CopyIcon";
 
 const HexToTailwind = () => {
   const [hexInput, setHexInput] = useState("");
@@ -25,9 +26,7 @@ const HexToTailwind = () => {
     <section>
       <div className="grid grid-cols-2 max-w-96 gap-y-2">
         <p>Input HEX code:</p>
-        <p>
-          Tailwind code <span className="inline-block">(with HEX):</span>
-        </p>
+        <p>Tailwind code:</p>
 
         <input
           type="text"
@@ -38,11 +37,20 @@ const HexToTailwind = () => {
 
         <div className="flex flex-col align-middle justify-center">
           <span>
-            {closestTailwind
-              ? `${
-                  closestTailwind.tailwind
-                } / #${closestTailwind.hex.toUpperCase()}`
-              : "..."}
+            {closestTailwind ? (
+              <>
+                <div className="flex mb-2">
+                  <div>{closestTailwind.tailwind}</div>
+                  <CopyIcon />
+                </div>
+                <div className="flex flex-row align-middle">
+                  <CopyIcon />
+                  <div>#{closestTailwind.hex.toUpperCase()}</div>
+                </div>
+              </>
+            ) : (
+              "..."
+            )}
           </span>
         </div>
 

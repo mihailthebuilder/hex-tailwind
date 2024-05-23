@@ -9,10 +9,10 @@ const CopyIcon = ({ onClick }: { onClick: () => void }) => (
   >
     <g
       fill="none"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       stroke="#000000"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       transform="translate(4 3)"
     >
       <path d="m6.5 11.5-3-3 3-3" />

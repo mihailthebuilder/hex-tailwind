@@ -37,7 +37,9 @@ const HexToTailwind = () => {
         <div className="flex flex-col align-middle justify-center">
           <span>
             {closestTailwind
-              ? `${closestTailwind.tailwind} / #${closestTailwind.hex}`
+              ? `${
+                  closestTailwind.tailwind
+                } / #${closestTailwind.hex.toUpperCase()}`
               : "..."}
           </span>
         </div>

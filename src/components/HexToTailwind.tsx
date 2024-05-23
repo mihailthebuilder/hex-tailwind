@@ -89,6 +89,11 @@ const HexToTailwind = () => {
               : "transparent",
           }}
         ></div>
+
+        <div className="col-span-2">
+          Difference perceptible to the human eye?{" "}
+          {closestTailwind ? (closestTailwind.diff < 1 ? "No" : "Yes") : "..."}
+        </div>
       </div>
     </section>
   );
@@ -98,5 +103,7 @@ const isValidHex: (input: string) => boolean = (input) => {
   let regex = new RegExp(/^([a-f0-9]{6}|[a-f0-9]{3})$/);
   return regex.test(input);
 };
+
+const ColorDifferenceResult = () => {};
 
 export default HexToTailwind;

@@ -8,11 +8,15 @@ import HexToTailwind from "../components/HexToTailwind";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>Hex to Tailwind</title>
+    <meta
+      name="description"
+      content="Find the closest Tailwind color for a given HEX code."
+    />
   </head>
   <body>
     <main class="mx-auto max-w-screen-sm">
-      <h1>Astro</h1>
+      <h1>HEX to Tailwind</h1>
 
       <HexToTailwind client:load />
     </main>

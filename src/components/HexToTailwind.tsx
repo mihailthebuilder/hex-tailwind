@@ -61,14 +61,14 @@ const HexToTailwind = () => {
                   />
                 </div>
                 <div className="flex flex-row align-middle">
+                  <div className="mr-1">
+                    #{closestTailwind.hex.toUpperCase()}
+                  </div>
                   <CopyIcon
                     onClick={createCopyToClipboardFunction(
                       "#" + closestTailwind.hex.toUpperCase()
                     )}
                   />
-                  <div className="ml-1">
-                    #{closestTailwind.hex.toUpperCase()}
-                  </div>
                 </div>
               </>
             ) : (

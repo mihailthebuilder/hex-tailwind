@@ -1,6 +1,6 @@
 const CopyIcon = ({ onClick }: { onClick: () => void }) => (
   <svg
-    className="cursor-pointer"
+    className="cursor-pointer mt-[1.5px]"
     width="20px"
     height="20px"
     viewBox="0 0 21 21"

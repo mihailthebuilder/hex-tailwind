@@ -1,11 +1,11 @@
-const CopyIcon = () => (
+const CopyIcon = ({ onClick }: { onClick: () => void }) => (
   <svg
-    // width="800px"
-    // height="800px"
+    className="cursor-pointer"
     width="20px"
     height="20px"
     viewBox="0 0 21 21"
     xmlns="http://www.w3.org/2000/svg"
+    onClick={onClick}
   >
     <g
       fill="none"

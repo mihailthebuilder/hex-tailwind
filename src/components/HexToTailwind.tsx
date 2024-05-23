@@ -22,6 +22,19 @@ const HexToTailwind = () => {
     setHexInput(newInput);
   };
 
+  const createCopyToClipboardFunction = (
+    text: string
+  ): (() => Promise<void>) => {
+    return async () => {
+      try {
+        await navigator.clipboard.writeText(text);
+        console.log("Text copied to clipboard", text);
+      } catch (err) {
+        console.error("Failed to copy text to clipboard:", err);
+      }
+    };
+  };
+
   return (
     <section>
       <div className="grid grid-cols-2 max-w-96 gap-y-2">
@@ -41,10 +54,18 @@ const HexToTailwind = () => {
               <>
                 <div className="flex mb-2">
                   <div className="mr-1">{closestTailwind.tailwind}</div>
-                  <CopyIcon />
+                  <CopyIcon
+                    onClick={createCopyToClipboardFunction(
+                      closestTailwind.tailwind
+                    )}
+                  />
                 </div>
                 <div className="flex flex-row align-middle">
-                  <CopyIcon />
+                  <CopyIcon
+                    onClick={createCopyToClipboardFunction(
+                      "#" + closestTailwind.hex.toUpperCase()
+                    )}
+                  />
                   <div className="ml-1">
                     #{closestTailwind.hex.toUpperCase()}
                   </div>

@@ -38,8 +38,8 @@ const HexToTailwind = () => {
   return (
     <section>
       <div className="grid grid-cols-2 max-w-96 gap-y-2">
-        <p className="font-semibold">Input HEX code:</p>
-        <p className="font-semibold">Tailwind code:</p>
+        <p className="font-bold">Input HEX code:</p>
+        <p className="font-bold">Tailwind code:</p>
 
         <input
           type="text"
@@ -92,7 +92,9 @@ const HexToTailwind = () => {
 
         <div className="col-span-2">
           Difference perceptible to the human eye?{" "}
-          {closestTailwind ? (closestTailwind.diff < 1 ? "No" : "Yes") : "..."}
+          {closestTailwind
+            ? ColorDifferenceResult(closestTailwind.diff)
+            : "..."}
         </div>
       </div>
     </section>
@@ -104,6 +106,8 @@ const isValidHex: (input: string) => boolean = (input) => {
   return regex.test(input);
 };
 
-const ColorDifferenceResult = () => {};
+const ColorDifferenceResult = (diff: number) => {
+  return <span className="font-bold">{diff > 1 ? "Yes" : "No"}</span>;
+};
 
 export default HexToTailwind;

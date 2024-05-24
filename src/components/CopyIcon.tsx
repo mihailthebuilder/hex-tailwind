@@ -24,6 +24,7 @@ const CopyIcon = ({ onClick }: { onClick: () => void }) => {
           handleCopy();
         }
       }}
+      title="Click to copy to clipboard"
     >
       <svg
         className="cursor-pointer mt-[1.5px]"

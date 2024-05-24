@@ -1,5 +1,9 @@
 # HEX to Tailwind
 
+## TODO
+
+- make it work with older Tailwind versions
+
 ## Commands
 
 | Command                   | Action                                           |

@@ -2,7 +2,11 @@
 
 ## TODO
 
-- make it work with older Tailwind versions
+- finish contact me section
+- SEO meta tags
+- analytics
+- support older Tailwind versions
+- support 4-character (or other format) HEX codes
 
 ## Commands
 

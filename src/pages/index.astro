@@ -8,19 +8,50 @@ import HexToTailwind from "../components/HexToTailwind";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Hex to Tailwind</title>
+    <title>HEX to Tailwind</title>
     <meta
       name="description"
       content="Find the closest Tailwind color for a given HEX code."
     />
   </head>
-  <body>
+  <body class="bg-neutral-100">
     <main class="mx-auto max-w-prose p-3">
-      <h1 class="text-3xl font-bold mb-10">
-        Convert your HEX code to the closest color in the Tailwind palette
-      </h1>
-
+      <section class="mb-8">
+        <h1 class="text-3xl font-bold mb-3">HEX to Tailwind</h1>
+        <p>
+          Convert your HEX code to the closest color in the <a
+            href="https://tailwindcss.com/docs/customizing-colors"
+            class="underline"
+            target="_blank">Tailwind color palette</a
+          >.
+        </p>
+      </section>
       <HexToTailwind client:load />
+      <section class="mt-8 mb-8">
+        <h2 class="text-2xl font-bold mb-3">How does it work?</h2>
+        <div class="space-y-3">
+          <p>
+            Type (or copy/paste) the HEX code in the input box on the left hand
+            side. The code can be with or without the hashtag.
+          </p>
+          <p>
+            The website will then generate the closest Tailwind color on the
+            right hand side, together with the corresponding HEX code. We use
+            the Delta E algorithm, which is the official way to measure the
+            difference between two colors.
+          </p>
+          <p>
+            You can quickly copy either of the two generated color codes by
+            clicking/tapping on the clipboard icon. And you can compare the two
+            colors visually.
+          </p>
+          <p>
+            We also highlight whether the difference is visible to the human
+            eye. We do this by checking whether the Delta E score is higher than
+            1, which again is the official way to establish the fact.
+          </p>
+        </div>
+      </section>
     </main>
   </body>
 </html>

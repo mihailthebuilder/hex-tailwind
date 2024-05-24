@@ -3,6 +3,13 @@ import { useState } from "react";
 const CopyIcon = ({ onClick }: { onClick: () => void }) => {
   const [notifyCopied, setNotifyCopied] = useState(false);
 
+  if (notifyCopied) {
+    setTimeout(() => {
+      setNotifyCopied(false);
+    }, 1000);
+    return <span className="text-green-600 font-semibold">Copied!</span>;
+  }
+
   return (
     <svg
       className="cursor-pointer mt-[1.5px]"

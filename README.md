@@ -2,9 +2,8 @@
 
 ## TODO
 
-- Cloudflare pages
 - analytics
-- test with Chrome lightouse
+- test with Chrome lightouse & fix score issues
 - domain hookup
 - add to Google Search
 - support older Tailwind versions

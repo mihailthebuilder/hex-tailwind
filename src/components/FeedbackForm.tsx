@@ -4,7 +4,7 @@ const FeedbackForm = () => {
   const [feedback, setFeedback] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<Error>();
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -23,8 +23,9 @@ const FeedbackForm = () => {
     })
       .then((response) => response.json())
       .then(() => setSubmitted(true))
-      .catch((error) => {
+      .catch((error: Error) => {
         setError(error);
+        setIsLoading(false);
       });
   };
 
@@ -35,9 +36,13 @@ const FeedbackForm = () => {
   return (
     <form className="space-y-5" onSubmit={handleSubmit}>
       {error && (
-        <p className="text-red-700">
-          Something went wrong, error message {error}. Please reach out to me{" "}
-          <a href="https://linkedin.com/in/mihailmarian">on LinkedIn</a>
+        <p className="text-red-700 font-semibold">
+          Something went wrong, error message {error.message}. Please reach out
+          to me{" "}
+          <a className="underline" href="https://linkedin.com/in/mihailmarian">
+            on LinkedIn
+          </a>{" "}
+          instead.
         </p>
       )}
       <textarea
@@ -52,7 +57,10 @@ const FeedbackForm = () => {
       ></textarea>
       <button
         type="submit"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-10 rounded"
+        className={
+          (isLoading ? "bg-gray-600" : "bg-blue-500 hover:bg-blue-700") +
+          ` text-white font-semibold py-2 px-10 rounded w-40`
+        }
         disabled={isLoading}
       >
         {isLoading ? "..." : "Submit"}

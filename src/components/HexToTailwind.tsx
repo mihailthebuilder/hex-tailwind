@@ -36,7 +36,7 @@ const HexToTailwind = () => {
   };
 
   return (
-    <section>
+    <section className="text-[1.25rem]">
       <div className="grid grid-cols-2 gap-y-2">
         <p className="font-bold">Input HEX code:</p>
         <p className="font-bold">Tailwind color:</p>

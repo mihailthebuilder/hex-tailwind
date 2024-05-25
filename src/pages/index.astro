@@ -17,15 +17,14 @@ import Link from "../components/Link.astro";
     />
   </head>
   <body class="bg-neutral-100">
-    <main class="mx-auto max-w-prose p-3">
+    <main class="mx-auto max-w-prose p-3 mt-3 md:mt-10">
       <section class="mb-8">
-        <h1 class="text-3xl font-bold mb-3">HEX to Tailwind</h1>
-        <p>
+        <h1 class="text-4xl font-bold mb-3">HEX to Tailwind</h1>
+        <p class="text-[1.25rem] md:text-[1.5rem]">
           Convert your HEX code to the closest color in the
           <Link url="https://tailwindcss.com/docs/customizing-colors"
             >Tailwind color palette</Link
-          >
-          .
+          >.
         </p>
       </section>
       <HexToTailwind client:load />

@@ -59,7 +59,7 @@ const FeedbackForm = () => {
         type="submit"
         className={
           (isLoading ? "bg-gray-600" : "bg-blue-500 hover:bg-blue-700") +
-          ` text-white font-semibold py-2 px-10 rounded w-40`
+          ` text-white font-semibold py-2 px-10 rounded w-full md:w-40`
         }
         disabled={isLoading}
       >

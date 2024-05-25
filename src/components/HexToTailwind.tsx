@@ -90,8 +90,8 @@ const HexToTailwind = () => {
           }}
         ></div>
 
-        <div className="col-span-2">
-          Difference perceptible to the human eye?{" "}
+        <div className="col-span-2 text-[1.15rem] md:text-[1.25rem]">
+          Difference visible to the human eye?{" "}
           {closestTailwind
             ? ColorDifferenceResult(closestTailwind.diff)
             : "..."}

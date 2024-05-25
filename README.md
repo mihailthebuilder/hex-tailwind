@@ -2,9 +2,10 @@
 
 ## TODO
 
-- finish contact me section
 - SEO meta tags
 - analytics
+- Cloudflare pages
+- test with Chrome lightouse
 - support older Tailwind versions
 - support 4-character (or other format) HEX codes
 

@@ -2,10 +2,11 @@
 
 ## TODO
 
-- SEO meta tags
-- analytics
 - Cloudflare pages
+- analytics
 - test with Chrome lightouse
+- domain hookup
+- add to Google Search
 - support older Tailwind versions
 - support 4-character (or other format) HEX codes
 

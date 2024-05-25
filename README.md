@@ -8,6 +8,7 @@
 - add to Google Search
 - support older Tailwind versions
 - support 4-character (or other format) HEX codes
+- add contrast between background and the 2 rendered colors
 
 ## Commands
 

@@ -1,5 +1,7 @@
 ---
 import HexToTailwind from "../components/HexToTailwind";
+import FeedbackForm from "../components/FeedbackForm";
+import Link from "../components/Link.astro";
 ---
 
 <html lang="en">
@@ -19,11 +21,11 @@ import HexToTailwind from "../components/HexToTailwind";
       <section class="mb-8">
         <h1 class="text-3xl font-bold mb-3">HEX to Tailwind</h1>
         <p>
-          Convert your HEX code to the closest color in the <a
-            href="https://tailwindcss.com/docs/customizing-colors"
-            class="underline"
-            target="_blank">Tailwind color palette</a
-          >.
+          Convert your HEX code to the closest color in the
+          <Link url="https://tailwindcss.com/docs/customizing-colors"
+            >Tailwind color palette</Link
+          >
+          .
         </p>
       </section>
       <HexToTailwind client:load />
@@ -69,16 +71,10 @@ import HexToTailwind from "../components/HexToTailwind";
             found in the CSS. Hence why I decided to build this website :)
           </p>
           <p>
-            I built the website using the <a
-              href="https://astro.build/"
-              class="underline"
-              target="_blank">Astro</a
-            > and <a href="https://react.dev/" class="underline" target="_blank"
-              >React</a
-            > frameworks. The site is hosted on <a
-              href="https://pages.cloudflare.com/"
-              class="underline"
-              target="_blank">Cloudflare Pages</a
+            I'm using the <Link url="https://astro.build/">Astro</Link> and <Link
+              url="https://react.dev/">React</Link
+            > frameworks for the website, and it's hosted on <Link
+              url="https://pages.cloudflare.com/">Cloudflare Pages</Link
             >, for free (woohoo!).
           </p>
           <p></p>
@@ -88,8 +84,12 @@ import HexToTailwind from "../components/HexToTailwind";
         <h2 class="text-2xl font-bold mb-3">Contact me</h2>
         <div class="space-y-3">
           <p>Have questions/feedback? Send a message with the form below.</p>
-          <p>form</p>
-          <p>You can also reach out to me directly on LinkedIn.</p>
+          <FeedbackForm />
+          <p>
+            You can also reach out to me directly <Link
+              url="https://linkedin.com/in/mihailmarian">on LinkedIn</Link
+            >.
+          </p>
         </div>
       </section>
     </main>

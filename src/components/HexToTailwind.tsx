@@ -43,7 +43,7 @@ const HexToTailwind = () => {
 
         <input
           type="text"
-          className="border uppercase w-40 block rounded shadow focus:ring-cyan-800 p-2"
+          className="border border-black uppercase w-40 block rounded focus:ring-cyan-800 p-2"
           value={`#${hexInput}`}
           onChange={handleHexInputChange}
         />

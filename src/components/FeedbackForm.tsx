@@ -58,7 +58,7 @@ const FeedbackForm = () => {
       <button
         type="submit"
         className={
-          (isLoading ? "bg-gray-600" : "bg-blue-500 hover:bg-blue-700") +
+          (isLoading ? "bg-gray-600" : "bg-blue-800 hover:bg-blue-950") +
           ` text-white font-semibold py-2 px-10 rounded w-full md:w-40`
         }
         disabled={isLoading}

@@ -37,10 +37,13 @@ const HexToTailwind = () => {
   return (
     <section className="text-[1.25rem]">
       <div className="grid grid-cols-2 gap-y-2">
-        <p className="font-bold">Input HEX code:</p>
+        <label className="font-bold" htmlFor="hexcode">
+          Input HEX code:
+        </label>
         <p className="font-bold">Tailwind color:</p>
 
         <input
+          id="hexcode"
           type="text"
           className="border border-black uppercase w-40 block rounded focus:ring-cyan-800 p-2"
           value={`#${hexInput}`}

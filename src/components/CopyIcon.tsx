@@ -19,7 +19,6 @@ const CopyIcon = ({ onClick }: { onClick: () => void }) => {
     <button
       onClick={handleCopy}
       onKeyDown={(event) => {
-        console.log(event.key);
         if (["Enter", "Space"].includes(event.key)) {
           handleCopy();
         }

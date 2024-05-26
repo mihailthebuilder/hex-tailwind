@@ -15,6 +15,17 @@ import Link from "../components/Link.astro";
       name="description"
       content="Find the closest Tailwind color for a given HEX code. A simple online web app that is completely free."
     />
+
+    <!-- Analytics -->
+    {
+      import.meta.env.PROD && (
+        <script
+          defer
+          src="https://um.app.taralys.com/hi"
+          data-website-id="46137bcf-56c8-4c56-a6a1-e13a8af5255d"
+        />
+      )
+    }
   </head>
   <body class="bg-neutral-100">
     <main class="mx-auto max-w-prose p-3 mt-3 md:mt-10">

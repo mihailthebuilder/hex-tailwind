@@ -2,14 +2,11 @@
 
 ## TODO
 
-- ~~set up analytics server~~
-- ~~buy domain~~
-- ~~test with Chrome lightouse & fix score issues~~
-- ~~domain hookup~~
-- ~~add analytics~~
-- social graph tags
-- one more round of Chrome lighthouse testing
-- add to Google Search
+- ~~analytics~~
+- ~~OpenGraph tests~~
+- ~~Chrome lighthouse tests~~
+- ~~custom domain~~
+- ~~Google Search console~~
 - support older Tailwind versions
 - support 4-character (or other format) HEX codes
 - add contrast between background and the 2 rendered colors

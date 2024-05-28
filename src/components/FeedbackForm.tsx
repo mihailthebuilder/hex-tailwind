@@ -10,26 +10,18 @@ const FeedbackForm = () => {
     event.preventDefault();
     setIsLoading(true);
 
-    fetch(
-      "https://basic-forms.app.taralys.com/users/4f061f70-4c65-4b8f-99d8-99c2c055b09c/submit",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          content: feedback,
-        }),
-      }
-    )
-      .then((response) => {
-        if (response.status != 202) {
-          throw Error(
-            `Expected response status 202, got ${response.status}: ${response.statusText}`
-          );
-        }
-      })
+    fetch("https://formsubmit.co/ajax/mihailthebuilder@gmail.com", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        name: "New HEX to Tailwind submission",
+        message: { feedback },
+      }),
+    })
+      .then((response) => response.json())
       .then(() => setSubmitted(true))
       .catch((error: Error) => {
         setError(error);

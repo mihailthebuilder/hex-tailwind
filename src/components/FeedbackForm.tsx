@@ -15,7 +15,7 @@ const FeedbackForm = () => {
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "text/plain",
           Accept: "application/json",
         },
         body: feedback,

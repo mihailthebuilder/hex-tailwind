@@ -11,7 +11,7 @@ const FeedbackForm = () => {
     setIsLoading(true);
 
     fetch(
-      "https://basic-forms.app.taralys.com/submit/ecd3daad1459d31dae71afee1168b50fde7f92f23822156f069d35f7c4b52301ee739b33fecd8b4a726a76b48d4b272ec5d40008a2b7bef9b86f1304aa3245b5",
+      "https://basic-forms.app.taralys.com/submit/fbe1ee329fbcde3af10a5cd88ea685b172c59c05cb8c1022f9e63689ea94158aecbec4bc52625514c2d225eb69f30bfd636027950939b6a575b343c1c334c3d5",
       {
         method: "POST",
         headers: {

@@ -2,6 +2,7 @@
 import HexToTailwind from "../components/HexToTailwind";
 import FeedbackForm from "../components/FeedbackForm";
 import Link from "../components/Link.astro";
+import HexCodeInUrlNotifier from "../components/HexInUrlNotifier";
 
 const title = "HEX to Tailwind";
 const description =
@@ -63,7 +64,8 @@ const image = "/meta.webp";
           >.
         </p>
       </section>
-      <HexToTailwind client:load />
+      <HexToTailwind client:load url={canonicalURL.toString()} />
+      <HexCodeInUrlNotifier client:only="react" />
       <section class="mt-8 mb-8">
         <h2 class="text-2xl font-bold mb-3">How does it work?</h2>
         <div class="space-y-3">

@@ -11,16 +11,14 @@ const FeedbackForm = () => {
     setIsLoading(true);
 
     fetch(
-      "https://basic-forms.app.taralys.com/users/4f061f70-4c65-4b8f-99d8-99c2c055b09c/submit",
+      "https://basic-forms.app.taralys.com/submit/fbe1ee329fbcde3af10a5cd88ea685b172c59c05cb8c1022f9e63689ea94158aecbec4bc52625514c2d225eb69f30bfd636027950939b6a575b343c1c334c3d5",
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "text/plain",
           Accept: "application/json",
         },
-        body: JSON.stringify({
-          content: feedback,
-        }),
+        body: feedback,
       }
     )
       .then((response) => {

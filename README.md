@@ -2,11 +2,8 @@
 
 ## TODO
 
-- ~~analytics~~
-- ~~OpenGraph tests~~
-- ~~Chrome lighthouse tests~~
-- ~~custom domain~~
-- ~~Google Search console~~
+- Google shows the content instead of metadata; add `data-nosnippet` attribute for
+  dynamic section to avoid it being shown in preview
 - support older Tailwind versions
 - support 4-character (or other format) HEX codes
 - add contrast between background and the 2 rendered colors

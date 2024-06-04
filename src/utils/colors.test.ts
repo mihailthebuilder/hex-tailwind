@@ -9,12 +9,12 @@ test.each([
   expect(normalizeHex(input)).toBe(expected);
 });
 
-test.each([["d6d3d1", { R: 214, G: 211, B: 209 }]])(
-  "hexToRgb(%s) -> %j",
-  (input, expected) => {
-    expect(hexToRgb(input)).toStrictEqual(expected);
-  }
-);
+test.each([
+  ["d6d3d1", { R: 214, G: 211, B: 209 }],
+  ["215b63", { R: 33, G: 91, B: 99 }],
+])("hexToRgb(%s) -> %j", (input, expected) => {
+  expect(hexToRgb(input)).toStrictEqual(expected);
+});
 
 test.each([
   ["000000", { tailwind: "black", hex: "000000", truncatedDiff: 0 }],

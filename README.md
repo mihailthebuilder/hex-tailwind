@@ -2,6 +2,7 @@
 
 ## TODO
 
+- add more content on the h1 / open-graph titles for better SEO
 - Google shows the content instead of metadata; add `data-nosnippet` attribute for
   dynamic section to avoid it being shown in preview
 - support older Tailwind versions

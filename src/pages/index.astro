@@ -47,8 +47,8 @@ const image = "/meta.webp";
         <script
           is:inline
           defer
-          src="https://um.app.taralys.com/hi"
-          data-website-id="46137bcf-56c8-4c56-a6a1-e13a8af5255d"
+          src={import.meta.env.ANALYTICS_URL}
+          data-website-id={import.meta.env.ANALYTICS_WEBSITE_ID}
         />
       )
     }

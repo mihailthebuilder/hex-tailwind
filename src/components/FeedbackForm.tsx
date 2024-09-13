@@ -10,21 +10,18 @@ const FeedbackForm = () => {
     event.preventDefault();
     setIsLoading(true);
 
-    fetch(
-      "https://basic-forms.app.taralys.com/submit/fbe1ee329fbcde3af10a5cd88ea685b172c59c05cb8c1022f9e63689ea94158aecbec4bc52625514c2d225eb69f30bfd636027950939b6a575b343c1c334c3d5",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "text/plain",
-          Accept: "application/json",
-        },
-        body: feedback,
-      }
-    )
+    const formData = new FormData();
+    formData.append("feedback", feedback);
+    formData.append("access_key", import.meta.env.PUBLIC_FORM_ACCESS_KEY);
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    })
       .then((response) => {
-        if (response.status != 202) {
+        if (response.status != 200) {
           throw Error(
-            `Expected response status 202, got ${response.status}: ${response.statusText}`
+            `Expected response status 200, got ${response.status}: ${response.statusText}`
           );
         }
       })

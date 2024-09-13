@@ -1,7 +1,8 @@
 # HEX to Tailwind
 
 A small web app that converts your HEX code to the closest color in the Tailwind color palette.
-Built with Astro and React. [Site](https://hextotailwind.com) is ranked 2nd on Google and 1st on Bing.
+Built with Astro and React. [Site](https://hextotailwind.com) is ranked 2nd on Google search results and 1st on Bing.
+View the site traffic analytics [here](https://um.app.taralys.com/share/9lrPut4XEF1miVx3/hextotailwind.com).
 
 ## Requirements
 
